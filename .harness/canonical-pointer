@@ -1,0 +1,5 @@
+# Canonical source pointer — run Healthcare-Data-Exchange ./scripts/sync-policy-repo.sh to update
+canonical_repo: https://github.com/SafetyMP/Healthcare-Data-Exchange
+canonical_commit: be2cd28878f754e6e39144af3278bdd0f808a35a
+rego_bundle_hash: 8bb3ac2bb48831177f35e45412af677e8c630d055e398ee6739b52ec3c17c981
+synced_at: 2026-07-08T04:12:00Z

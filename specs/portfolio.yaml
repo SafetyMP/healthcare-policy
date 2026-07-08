@@ -1,0 +1,23 @@
+schema: portfolio/v1
+name: cloud-healthcare-exchange
+description: CHEX OPAL policy mirror (ADR 0007)
+
+repos:
+  canonical:
+    role: canonical
+    url: https://github.com/SafetyMP/Healthcare-Data-Exchange
+    local_path: ../Cloud Healthcare Exchange
+    verify: ./scripts/verify.sh
+    agent_root: true
+    sync_script: ./scripts/sync-policy-repo.sh
+
+  healthcare-policy:
+    role: policy-mirror
+    url: https://github.com/SafetyMP/healthcare-policy
+    canonical_repo: canonical
+    verify: ./scripts/verify.sh
+    edit_policy: canonical_only
+
+rules:
+  - Do not edit authz.rego here — canonical source is Healthcare-Data-Exchange policy/.
+  - Updates arrive via canonical ./scripts/sync-policy-repo.sh only.

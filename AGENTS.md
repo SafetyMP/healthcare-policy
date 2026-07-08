@@ -13,6 +13,7 @@ Canonical Rego and OPA tests live in [Healthcare-Data-Exchange](https://github.c
 | `./scripts/check-harness.sh` | Harness scaffold + hook syntax |
 | `./scripts/check-mirror-governance.sh` | Mirror constraints (no tests, canonical pointer) |
 | `./scripts/verify.sh` | Definition of Done for this mirror |
+| `./scripts/render-assets.sh` | Render `docs/assets/*.svg` to PNG + `.github/social-preview.png` |
 
 CI: `.github/workflows/portfolio-verify.yml` (same workflow name as canonical repo).
 

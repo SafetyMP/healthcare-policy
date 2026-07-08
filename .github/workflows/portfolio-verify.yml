@@ -1,0 +1,23 @@
+name: portfolio-verify
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-verify-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Portfolio verify (policy mirror)
+        run: |
+          chmod +x scripts/*.sh scripts/lib/*.sh 2>/dev/null || true
+          ./scripts/verify.sh

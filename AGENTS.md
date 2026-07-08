@@ -14,6 +14,8 @@ Canonical Rego and OPA tests live in [Healthcare-Data-Exchange](https://github.c
 | `./scripts/check-mirror-governance.sh` | Mirror constraints (no tests, canonical pointer) |
 | `./scripts/verify.sh` | Definition of Done for this mirror |
 
+CI: `.github/workflows/portfolio-verify.yml` (same workflow name as canonical repo).
+
 ## Definition of Done
 
 ```bash

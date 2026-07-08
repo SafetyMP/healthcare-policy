@@ -32,6 +32,21 @@ if [[ ! -f "$POINTER" ]]; then
 else
   grep -q 'canonical_repo:' "$POINTER" || { echo "BAD pointer: canonical_repo" >&2; errors=$((errors + 1)); }
   grep -q 'canonical_commit:' "$POINTER" || { echo "BAD pointer: canonical_commit" >&2; errors=$((errors + 1)); }
+  grep -q 'rego_bundle_hash:' "$POINTER" || { echo "BAD pointer: rego_bundle_hash" >&2; errors=$((errors + 1)); }
+fi
+
+echo "== mirror: rego bundle hash =="
+if [[ -f "$POINTER" ]]; then
+  # shellcheck source=lib/portfolio.sh
+  if [[ -f "$ROOT/scripts/lib/portfolio.sh" ]]; then
+    source "$ROOT/scripts/lib/portfolio.sh"
+    expected="$(portfolio_field "$POINTER" rego_bundle_hash)"
+    actual="$(portfolio_rego_bundle_hash "$ROOT")"
+    if [[ -n "$expected" && "$expected" != "pending-sync" && "$expected" != "$actual" ]]; then
+      echo "HASH MISMATCH: pointer=$expected files=$actual" >&2
+      errors=$((errors + 1))
+    fi
+  fi
 fi
 
 echo "== mirror: portfolio link =="

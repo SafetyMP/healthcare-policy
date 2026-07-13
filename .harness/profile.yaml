@@ -21,6 +21,7 @@ requires:
     stop: verify-on-stop
   commands:
     verify: ./scripts/verify.sh
+    integration: null
 bundles_applied:
 - cloud-guards
 - verify-on-stop

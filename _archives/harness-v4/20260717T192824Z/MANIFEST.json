@@ -1,0 +1,14 @@
+{
+  "schema": "harness-v4-archive/v1",
+  "site_id": "healthcare-policy",
+  "local_path": "/Users/sagehart/Downloads/healthcare-policy",
+  "utc": "20260717T192824Z",
+  "mode": "overlay-only",
+  "note": "multi-repo .harness/ kept live; AGENTS snapshot only",
+  "archived": [
+    {
+      "path": "AGENTS.md.pre-corp-site",
+      "sha256": "3028081f91993fa46c816eaded6c0f0d367c55918413e5fb08fa6f7857c023c6"
+    }
+  ]
+}

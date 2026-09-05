@@ -24,6 +24,7 @@ Record `verification_scripts` as site-relative `scripts/harness` (exactly `verif
 |---------|---------|
 | `./scripts/check-harness.sh` | Harness scaffold + hook syntax |
 | `./scripts/check-mirror-governance.sh` | Mirror constraints (no tests, canonical pointer) |
+| `./scripts/check-public-pii.sh` | Tracked-text home paths and personal emails |
 | `./scripts/verify.sh` | Definition of Done for this mirror |
 | `./scripts/render-assets.sh` | Render social/docs assets |
 

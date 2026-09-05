@@ -49,3 +49,7 @@ Profile: **policy-mirror** · Portfolio: [`specs/portfolio.yaml`](specs/portfoli
 ## Assets
 
 Diagram sources and PNG exports: [`docs/assets/`](docs/assets/README.md)
+
+## License and security
+
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`SECURITY.md`](SECURITY.md).

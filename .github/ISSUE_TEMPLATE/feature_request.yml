@@ -1,0 +1,56 @@
+name: Feature Request
+description: Propose a mirror-only change (not a second HIE)
+title: "[feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read [DESIGN-PIVOT.md](https://github.com/SafetyMP/healthcare-policy/blob/main/docs/DESIGN-PIVOT.md) before filing.
+        This repo stays an OPAL **mirror**. It must not grow a UI or become a second HIE.
+        Policy and product work belongs on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange).
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Mirror governance / sync pointer
+        - Verify / harness / CI
+        - Docs / community health
+        - Policy (file on Healthcare-Data-Exchange instead)
+        - Unsure / needs triage
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What problem does this solve for the OPAL mirror (not a new HIE or UI)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: High-level approach; link the canonical repo if this is really a policy change
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope checklist
+      options:
+        - label: I understand this repo is an OPAL mirror, not a standalone product
+          required: true
+        - label: I am not proposing edits to authz.rego in this repository
+          required: true

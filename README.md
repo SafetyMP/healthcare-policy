@@ -16,7 +16,9 @@
 
 ---
 
-> **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on the main repo. Updates arrive via `./scripts/sync-policy-repo.sh` from [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange).
+> **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on the main repo. Updates arrive via `./scripts/sync-policy-repo.sh` from [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). Not a standalone product — clone Healthcare-Data-Exchange to change policy.
+
+> **Permit rule:** Do not edit policy in the mirror. Canonical Rego lives on Healthcare-Data-Exchange. Same instinct: [SafetyMP](https://github.com/SafetyMP/SafetyMP).
 
 ## Architecture
 
@@ -52,4 +54,4 @@ Diagram sources and PNG exports: [`docs/assets/`](docs/assets/README.md)
 
 ## License and security
 
-Apache License 2.0. See [`LICENSE`](LICENSE) and [`SECURITY.md`](SECURITY.md).
+Apache License 2.0. See [`LICENSE`](LICENSE), [`SECURITY.md`](SECURITY.md), [`CONTRIBUTING.md`](CONTRIBUTING.md), and [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).

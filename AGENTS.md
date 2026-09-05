@@ -1,22 +1,14 @@
 # AGENTS.md — healthcare-policy (OPAL mirror)
 
-Corporate/site overlay (`site_id: healthcare-policy`) plus **multi-repo harness**
-(`.harness/`, including `canonical-pointer`). Do not archive or remove `.harness/`.
+## Community contract
 
-## Do not edit policy here
+This repository is an **OPAL policy mirror**, not a standalone product.
 
-Canonical Rego and OPA tests live in [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange)
-(`policy/`). Agents work there and run `./scripts/sync-policy-repo.sh` to update this repo.
+1. **Do not edit Rego here.** Canonical Rego and OPA tests live in `policy/` on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange).
+2. **Canonical repo** is Healthcare-Data-Exchange. Clone that repo to change policy, then run `./scripts/sync-policy-repo.sh` to update this mirror.
+3. **Verify** with `./scripts/verify.sh`. Do not claim green from prose.
 
-## Gates
-
-
-| Command | Purpose |
-|---|---|
-| `./scripts/verify.sh` | Functional and static acceptance |
-| `./scripts/adversarial.sh` | Authorized local adversarial probes |
-
-Record `verification_scripts` as site-relative `scripts/harness` (exactly `verify.sh` and `adversarial.sh`). Optional wrappers may remain at `scripts/verify.sh` / `scripts/adversarial.sh` for humans; they are outside the digest boundary.
+Site/factory overlay: [docs/factory-overlay.md](docs/factory-overlay.md). Design posture: [docs/DESIGN-PIVOT.md](docs/DESIGN-PIVOT.md).
 
 ## Commands
 
@@ -35,12 +27,10 @@ Record `verification_scripts` as site-relative `scripts/harness` (exactly `verif
 | `authz.rego` | OPAL policy bundle (synced from canonical) |
 | `.manifest` | OPA bundle roots for OPAL |
 | `.harness/canonical-pointer` | Last canonical commit + bundle hash |
-| `.corp-harness/site.json` | Corp-site binding (unbound until a program) |
 | `specs/portfolio.yaml` | Multi-repo contract |
 
 ## Definition of Done
 
 ```bash
 ./scripts/verify.sh
-./scripts/adversarial.sh
 ```

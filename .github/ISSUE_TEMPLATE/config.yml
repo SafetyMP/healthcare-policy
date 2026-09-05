@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/SafetyMP/healthcare-policy/security/advisories/new
+    about: Report privately via GitHub Security Advisories — never post undisclosed vulnerabilities as public issues.
+  - name: Change authorization policy
+    url: https://github.com/SafetyMP/Healthcare-Data-Exchange
+    about: Do not edit authz.rego here. Open policy work on Healthcare-Data-Exchange, then sync.
+  - name: Contributing guide
+    url: https://github.com/SafetyMP/healthcare-policy/blob/main/CONTRIBUTING.md
+    about: Mirror rules, verify, and why Rego PRs are rejected.

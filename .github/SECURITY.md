@@ -22,7 +22,7 @@ Include:
 
 We aim to acknowledge reports within a reasonable timeframe. This is an open-source reference mirror without a formal SLA.
 
-Conduct issues are handled under [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), not security advisories.
+Conduct issues are handled under [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md), not security advisories.
 
 ## Scope notes
 

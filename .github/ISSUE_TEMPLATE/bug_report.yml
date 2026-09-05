@@ -1,0 +1,76 @@
+name: Bug Report
+description: Report a mirror, verify, or docs defect
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Include commands you ran and their output when possible.
+        This repo is an OPAL policy mirror — see [SECURITY.md](https://github.com/SafetyMP/healthcare-policy/blob/main/.github/SECURITY.md).
+        **Do not edit `authz.rego` here.** Policy bugs belong on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange) unless the defect is unique to this mirror (stale bundle, verify gap).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Clear description of the bug
+      placeholder: ./scripts/verify.sh fails on check-mirror-governance...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Mirror governance / canonical-pointer
+        - Verify / harness scripts
+        - Docs / community files
+        - authz.rego (report on Healthcare-Data-Exchange unless unique to this mirror)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Commands or workflow steps
+      placeholder: |
+        1. ./scripts/verify.sh
+        2. …
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: Paste relevant stderr, CI link, or pointer file
+      render: shell
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Local (./scripts/verify.sh)
+        - GitHub Actions CI
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Branch, commit, or release tag
+      placeholder: main, abc1234

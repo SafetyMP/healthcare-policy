@@ -18,6 +18,8 @@
 
 > **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on the main repo. Updates arrive via `./scripts/sync-policy-repo.sh` from [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). Not a standalone product — clone Healthcare-Data-Exchange to change policy.
 
+> **In the SafetyMP thesis:** Policy mirror only. Not a product and not an agent path. See the [portfolio README](https://github.com/SafetyMP/SafetyMP).
+
 ## Architecture
 
 | Policy + OPAL flow | Social preview |

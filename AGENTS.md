@@ -34,3 +34,9 @@ Site/factory overlay: [docs/factory-overlay.md](docs/factory-overlay.md). Design
 ```bash
 ./scripts/verify.sh
 ```
+
+## Coding standards (September 2026)
+
+Path-specific Copilot instructions: [`.github/instructions/`](.github/instructions/).
+Repository-wide Copilot file: [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
+Copilot code review skill: [`.github/skills/code-review/SKILL.md`](.github/skills/code-review/SKILL.md).

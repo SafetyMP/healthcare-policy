@@ -19,3 +19,7 @@ It is not a standalone product. Do not invent authorization policy.
 Change policy on Healthcare-Data-Exchange, then sync with
 `./scripts/sync-policy-repo.sh`. Community contract: [AGENTS.md](../AGENTS.md).
 Design posture: [docs/DESIGN-PIVOT.md](../docs/DESIGN-PIVOT.md).
+
+## Coding standards
+
+Follow path-specific files in [`.github/instructions/`](instructions/). Copilot code review loads [`.github/skills/code-review/`](skills/code-review/).

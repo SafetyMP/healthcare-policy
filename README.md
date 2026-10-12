@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>OPAL-tracked policy mirror</strong> for
-  <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange">Cloud Healthcare Exchange</a>
+  <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange">synthetic FHIR cell demo</a>
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ---
 
-> **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on the main repo. Updates arrive via `./scripts/sync-policy-repo.sh` from [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). Not a standalone product — clone Healthcare-Data-Exchange to change policy.
+> **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). That repository's `scripts/sync-policy-repo.sh` pushes updates here. This mirror does not contain that script. Clone Healthcare-Data-Exchange to change policy.
 
 > **Permit rule:** Do not edit policy in the mirror. Canonical Rego lives on Healthcare-Data-Exchange. Same instinct: [SafetyMP](https://github.com/SafetyMP/SafetyMP).
 

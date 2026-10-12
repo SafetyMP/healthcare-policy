@@ -16,8 +16,9 @@ It is not a standalone product. Do not invent authorization policy.
 - Never claim verify green from prose.
 - Never attach real PHI to issues, PRs, or advisories.
 
-Change policy on Healthcare-Data-Exchange, then sync with
-`./scripts/sync-policy-repo.sh`. Community contract: [AGENTS.md](../AGENTS.md).
+Change policy on Healthcare-Data-Exchange, then run that repo's
+`scripts/sync-policy-repo.sh`. This mirror does not contain that script.
+Community contract: [AGENTS.md](../AGENTS.md).
 Design posture: [docs/DESIGN-PIVOT.md](../docs/DESIGN-PIVOT.md).
 
 ## Coding standards

@@ -5,7 +5,7 @@
 This repository is an **OPAL policy mirror**, not a standalone product.
 
 1. **Do not edit Rego here.** Canonical Rego and OPA tests live in `policy/` on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange).
-2. **Canonical repo** is Healthcare-Data-Exchange. Clone that repo to change policy, then run `./scripts/sync-policy-repo.sh` to update this mirror.
+2. **Canonical repo** is Healthcare-Data-Exchange. Clone that repo to change policy, then run its `scripts/sync-policy-repo.sh`. This mirror does not contain that script.
 3. **Verify** with `./scripts/verify.sh`. Do not claim green from prose.
 
 Site/factory overlay: [docs/factory-overlay.md](docs/factory-overlay.md). Design posture: [docs/DESIGN-PIVOT.md](docs/DESIGN-PIVOT.md).

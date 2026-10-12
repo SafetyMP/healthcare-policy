@@ -9,7 +9,8 @@ Pull requests that change `authz.rego` (or add `*_test.rego`) **will be rejected
 Authorization policy and OPA tests live in `policy/` on
 [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange).
 Change the canonical repo, run `./scripts/verify.sh` there, then
-`./scripts/sync-policy-repo.sh` so this mirror stays in lockstep.
+that repo's `scripts/sync-policy-repo.sh` so this mirror stays in lockstep.
+This mirror does not contain that script.
 
 Mirror-only defects (stale `.harness/canonical-pointer`, verify-script gaps, docs)
 may be proposed here. Run `./scripts/verify.sh` before opening a PR.

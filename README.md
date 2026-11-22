@@ -18,7 +18,15 @@
 
 > **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). That repository's `scripts/sync-policy-repo.sh` pushes updates here. This mirror does not contain that script. Clone Healthcare-Data-Exchange to change policy.
 
-> **Permit rule:** Do not edit policy in the mirror. Canonical Rego lives on Healthcare-Data-Exchange. Same instinct: [SafetyMP](https://github.com/SafetyMP/SafetyMP).
+## Follow a research access request
+
+A research team asks to read a synthetic patient record. What should happen to the next request if the patient withdraws research consent? Change the consent state and inspect the decision in the [interactive Healthcare Data Exchange case](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request).
+
+The browser uses fixtures. In the reference backend, the [mirrored rule](authz.rego) reads research consent from `data.consent`. OPAL distributes changes to that data separately from the rules it tracks in Git. The [canonical pointer](.harness/canonical-pointer) identifies the policy source revision and bundle hash at the last sync. The [consent design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0008-opal-consent-sync.md) describes the backend path from withdrawal to a new decision.
+
+**For the exchange team that owns gateway releases.** Would distributing rules separately save enough coordinated release work to justify running OPAL? Compare staff time for the same rule change under both approaches, including the time to confirm that each endpoint uses the new revision. [OPA management architecture](https://www.openpolicyagent.org/docs/management-introduction) · [Project distribution design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0007-opal-policy-mirror.md)
+
+**For the exchange privacy lead.** Agree with a patient representative on what a person withdrawing consent should be told about when the change takes effect. Set a timing criterion with the release team, withdraw synthetic research consent, and measure how long each endpoint takes to consistently deny the request. CRISP, a regional exchange, assigns daily privacy matters to its privacy and security officer and consults its consumer council on opt-out and data use. [CRISP governance](https://www.crisphealth.org/governance/) · [ONC guidance on meaningful consent](https://healthit.gov/privacy-security/patient-consent-electronic-health-information-exchange/)
 
 ## Architecture
 

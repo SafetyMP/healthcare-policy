@@ -20,9 +20,9 @@
 
 ## Follow a research access request
 
-A release engineer can compare this mirror’s pinned pointer with the canonical published bundle digest, then load the working digest and see why publication sign-off should pause. The technical reference provides both source records and the evidence needed from a receiving gateway. [Compare publication evidence](https://safetymp.github.io/Healthcare-Data-Exchange/#policy-provenance) · [Operations guide and local verification](docs/exchange-operations.md)
+A research team asks to read a synthetic patient record. What should happen to the next request if the patient withdraws research consent? Change the consent state and inspect the decision in the [interactive Healthcare Data Exchange case](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request/research/mirror).
 
-At the exchange desk, check a US derivative request against the same synthetic EU record, trim the requested name and stage the allowed fields. A subsequent patient withdrawal clears the staged packet and changes the simulated decision. [Open the canonical disclosure desk](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request)
+In the case, select **Inspect this request’s field evidence** to keep the research requester and purpose while comparing granted and withheld consent. Inspect the receiving-gateway stage before accepting a propagation claim. Release engineers can also compare the pinned mirror pointer with the published digest and the newer working digest. [Research receiver trial](https://safetymp.github.io/Healthcare-Data-Exchange/#technical/research/granted/receiver/opposite/mirror) · [Policy publication evidence](https://safetymp.github.io/Healthcare-Data-Exchange/#technical/research/withheld/publication/selected/mirror) · [Operations guide](docs/exchange-operations.md)
 
 The browser uses fixtures. In the reference backend, the [mirrored rule](authz.rego) reads research consent from `data.consent`. OPAL distributes changes to that data separately from the rules it tracks in Git. The [canonical pointer](.harness/canonical-pointer) identifies the policy source revision and bundle hash at the last sync. The [consent design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0008-opal-consent-sync.md) describes the backend path from withdrawal to a new decision.
 

@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/assets/policy-opal-flow.png" alt="Policy mirror and OPAL distribution for CHEX" width="800"/>
-</p>
-
 <h1 align="center">healthcare-policy</h1>
 
 <p align="center">
@@ -14,21 +10,25 @@
   <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange"><img src="https://img.shields.io/badge/canonical-Healthcare--Data--Exchange-0ea5e9" alt="canonical repo"/></a>
 </p>
 
----
+<a name="follow-a-research-access-request"></a>
 
-> **Do not edit Rego here.** Canonical source and OPA tests live in `policy/` on [Healthcare-Data-Exchange](https://github.com/SafetyMP/Healthcare-Data-Exchange). That repository's `scripts/sync-policy-repo.sh` pushes updates here. This mirror does not contain that script. Clone Healthcare-Data-Exchange to change policy.
+## The privacy officer’s call
 
-## Follow a research access request
+A patient has withdrawn research permission. The exchange’s data steward has recorded the change. The research team may ask for the same record again. The privacy officer needs to know what the operator can say about the gateway where that request will be checked. Reassure the officer too soon and a disclosure could still reach the researchers. Keep a hold open without checking and researchers and staff can lose time.
 
-A research team asks to read a synthetic patient record. What should happen to the next request if the patient withdraws research consent? Change the consent state and inspect the decision in the [interactive Healthcare Data Exchange case](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request/research/mirror).
+Read the withdrawal, identify the published rule, and inspect the evidence available from the receiving gateway. Decide what to report and who owns the next check. Try the other evidence file with the patient, request, withdrawal and rule held fixed. [Open the exchange operator case](https://safetymp.github.io/Healthcare-Data-Exchange/#operator)
 
-In the case, select **Inspect this request’s field evidence** to keep the research requester and purpose while comparing granted and withheld consent. Inspect the receiving-gateway stage before accepting a propagation claim. Release engineers can also compare the pinned mirror pointer with the published digest and the newer working digest. [Research receiver trial](https://safetymp.github.io/Healthcare-Data-Exchange/#technical/research/granted/receiver/opposite/mirror) · [Policy publication evidence](https://safetymp.github.io/Healthcare-Data-Exchange/#technical/research/withheld/publication/selected/mirror) · [Operations guide](docs/exchange-operations.md)
+The compact guide follows the selected file through the rule, its publication record, the separate consent update and the gateway decision. The browser exercises fictional evidence. The canonical project contains the implementation and a separate probe that can exercise a running gateway. [Operator technical guide](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide) · [Operations guide](docs/exchange-operations.md) · [Companion case for the disclosure steward](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request)
 
-The browser uses fixtures. In the reference backend, the [mirrored rule](authz.rego) reads research consent from `data.consent`. OPAL distributes changes to that data separately from the rules it tracks in Git. The [canonical pointer](.harness/canonical-pointer) identifies the policy source revision and bundle hash at the last sync. The [consent design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0008-opal-consent-sync.md) describes the backend path from withdrawal to a new decision.
+## What the exchange is deciding whether to fund
 
-**For the exchange team that owns gateway releases.** Would distributing rules separately save enough coordinated release work to justify running OPAL? Compare staff time for the same rule change under both approaches, including the time to confirm that each endpoint uses the new revision. [OPA management architecture](https://www.openpolicyagent.org/docs/management-introduction) · [Project distribution design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0007-opal-policy-mirror.md)
+Would distributing policy rules independently save enough coordinated release work to justify operating OPAL? Compare the same rule change through a joint gateway release and through the mirror. Count release-team time, OPAL upkeep and the work of verifying adoption by each endpoint. Measure the time to observe a matching denial separately. [Operator investment question](docs/exchange-operations.md#measure-the-cost-of-independent-rule-publication)
 
-**For the exchange privacy lead.** Agree with a patient representative on what a person withdrawing consent should be told about when the change takes effect. Set a timing criterion with the release team, withdraw synthetic research consent, and measure how long each endpoint takes to consistently deny the request. CRISP, a regional exchange, assigns daily privacy matters to its privacy and security officer and consults its consumer council on opt-out and data use. [CRISP governance](https://www.crisphealth.org/governance/) · [ONC guidance on meaningful consent](https://healthit.gov/privacy-security/patient-consent-electronic-health-information-exchange/)
+## How the mirror fits
+
+1. **Identify the published rule.** The exchange owns the research access rule and tests. Its sync script copies the release to this repository. Here the pointer records the source commit and SHA-256 fingerprint of the Rego bundle. The mirror check recomputes that fingerprint from the local rule files. [Canonical rule and tests](https://github.com/SafetyMP/Healthcare-Data-Exchange/tree/main/policy) · [Sync script](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/scripts/sync-policy-repo.sh) · [Publication pointer](.harness/canonical-pointer) · [Mirror check](scripts/check-mirror-governance.sh)
+2. **Follow consent data separately.** The mirrored rule looks up research permission in `data.consent`. When the steward records a withdrawal, the exchange’s consent service asks OPAL to refresh that data at its clients. The publication acknowledgement records acceptance of that request. Receiver evidence is needed to determine what the gateway evaluated. [Mirrored rule](authz.rego) · [Consent publisher](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/services/consent-service/chex_consent/opal_publish.py)
+3. **Read one gateway observation.** The operator compares the endpoint, time, requester, purpose and denial reason. A matching refusal establishes the observed result for that request. Confirming when a particular consent update arrived requires evidence identifying that update at the receiver. The case uses synthetic observations. The canonical repository includes a probe for a running stack. [Operator decision tests](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/web/tests/e2e/operator.spec.ts) · [Gateway probe](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/scripts/demo.sh)
 
 ## Architecture
 

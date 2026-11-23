@@ -1,26 +1,30 @@
 # Research consent and exchange operations
 
-A study coordinator asks an exchange data steward to use Anna Mueller’s synthetic EU record. The case begins with the patient’s withheld research consent. Predict the outcome, check the access request and replay Anna’s grant or withdrawal. The steward can also select a US treatment request or US secondary use. The operations director decides whether a separately funded shadow pilot is justified. [Open the privacy desk](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request)
+The privacy officer needs an answer about a particular receiving gateway after a patient withdraws research permission. The data steward records the withdrawal. The exchange operator traces it to the gateway that handles the next matching request. Two evidence files present the same researcher, patient, purpose, withdrawal and published rule. Choose what to report, then inspect the result with the officer’s question in mind. [Open the operator case](https://safetymp.github.io/Healthcare-Data-Exchange/#operator) · [Open its technical guide](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide)
 
-| Selected request | With consent withheld | With consent granted |
-| --- | --- | --- |
-| Research, EU visiting team | Browser 403, no fields | Browser 200, five patient fields |
-| Treatment, US home team | Browser 403, no fields | Browser 403, regional restriction |
-| Derivative use, US clinician team | Browser 403, no fields | Browser 200, only `id` and `resourceType` |
+## Read the two paths
 
-## Inspect the same request
+| Record | What the operator can investigate |
+| --- | --- |
+| Published rule | The canonical source defines the condition for research access. The pointer in this mirror records a source revision and a hash of the published rule bundle. |
+| Recorded withdrawal | The consent service records the patient’s decision. OPAL signals a data change and its client can refresh the consent input read by the policy engine. |
+| Receiving gateway | A dated observation can identify the endpoint and the result for a particular request. Check its time, patient, purpose, requester and denial reason. A missing permission and a recorded withdrawal can both produce `consent_required`. |
 
-Choose **Inspect this request’s field evidence**. The link carries the same patient, purpose, credential profile and selected consent. Compare the opposite consent trial, then select a stage. For a granted derivative request, trim the requested name and stage only the two authorized fields. Switching to the withheld trial clears the synthetic preview. Trial comparisons leave the patient’s recorded choice intact. Each stage links to sources and has a permalink. Use the return link to resume that case. [Derivative field trial](https://safetymp.github.io/Healthcare-Data-Exchange/#technical/derivative/granted/fields/selected) · [Browser fixture](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/web/src/lib/demo.ts)
+An operator reporting a result should identify the gateway, request and observation time. The privacy officer decides what can be communicated to the patient and when wider checks are needed. The steward owns the consent record. The release and gateway teams own publication and endpoint checks. CRISP describes the roles of privacy officers and consumer representatives in exchange governance. [CRISP governance](https://www.crisphealth.org/governance/) · [OPA instance status](https://www.openpolicyagent.org/docs/management-status)
 
-## Evaluate the desk
+## Measure the cost of independent rule publication
 
-CRISP describes separate governance review for investigators’ data requests and explains that the data supplied depends on use. Its consumer and privacy governance also informs who should review consent-related operations. AHRQ asks exchange teams to define stakeholders, objectives and feasible value measures. The roles and pilot below apply these ideas to this fictional exchange. [CRISP research access](https://www.crisphealth.org/research/) · [CRISP governance](https://www.crisphealth.org/governance/) · [AHRQ exchange evaluation guide](https://digital.ahrq.gov/health-information-exchange-hie-evaluation-toolkit)
+The exchange operations director can compare two paths for the **same rule change**. In a joint release, record time spent coordinating deployments and confirming each endpoint’s rule version. With the mirror, record publication, monitoring, recovery and the same endpoint checks, plus the cost of maintaining OPAL. Use the same set of gateways in both trials.
 
-The operations director compares matched requests using the manual desk, a checklist and shadow policy checks. Track incorrect exclusions, any excess field, escalation effort and reviewer minutes. A steward reviews every proposed packet. Pause on an unauthorized field. Fund expansion only when the measured usable capacity covers first-year cost and the steward accepts the field decisions. The worksheet’s assumptions are illustrative. [Pilot costs and capacity](https://safetymp.github.io/Healthcare-Data-Exchange/#pilot-costs)
+For withdrawal handling, agree with the privacy officer and a patient representative on how quickly staff need a checked response from each gateway. Record the withdrawal time, the first matching denial observed after it and any gateways still awaiting a check. This measures time to an observation. To measure delivery of a particular consent update, the receiver would also need to identify that update and record when it applied it using a comparable clock. Use the measured release effort and verification coverage to judge whether to fund independent distribution. [OPA management architecture](https://www.openpolicyagent.org/docs/management-introduction) · [Project distribution design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0007-opal-policy-mirror.md)
+
+## Companion disclosure case
+
+The disclosure steward has a separate handoff. A study coordinator needs information to check a roster entry. Inspect the synthetic request, choose what the steward should prepare, and trace which fields the receiving team can use. Its worksheet compares manual review, a checklist and a shadow pilot for the desk. [Open the disclosure steward’s case](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request)
 
 ## Verify a policy release
 
-A release engineer can inspect the pinned publication and compare a candidate SHA-256 with the published bundle and working source. Open **Published policy**, compare the prefilled mirror pointer, then load the working digest and compare again. The snapshot is pinned to the two linked repository revisions. [Publication comparison](https://safetymp.github.io/Healthcare-Data-Exchange/#policy-provenance)
+The operator guide links the rule to the mirror revision and hash. A release engineer can compare the published bytes against the canonical revision that supplied them. [Trace the operator’s evidence](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide) · [Mirror publication pointer](../.harness/canonical-pointer)
 
 For current checkouts, run these commands from Healthcare-Data-Exchange with the mirror beside it. They check the working stamp and compare the published commit’s rule content against the mirror files and pointer.
 
@@ -30,4 +34,4 @@ export CHEX_PORTFOLIO_MIRROR_PATH="../healthcare-policy"
 ./scripts/check-portfolio-cross-repo.sh
 ```
 
-Policy rules in Git and consent data follow separate OPAL update paths. A content hash establishes a publication comparison. OPA status can report a specific instance’s activated bundle revision. Verifying a withdrawal also requires a matching patient, requester and purpose at each receiving endpoint, along with comparable event and observation times to measure delay. The project’s separate Compose probe polls one gateway through a research withdrawal and grant. [Policy distribution design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0007-opal-policy-mirror.md) · [Consent design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0008-opal-consent-sync.md) · [Gateway probe](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/scripts/demo.sh) · [OPA status evidence](https://www.openpolicyagent.org/docs/management-status)
+Policy rules in Git and consent data follow separate OPAL update paths. A content hash establishes a publication comparison. OPA status can report a specific instance’s activated bundle revision. The project’s separate Compose probe polls one gateway through a research withdrawal and grant and checks the HTTP statuses. The operator must inspect the denial reason to attribute a refusal to consent. Neither the status nor the reason carries an acknowledgement for a particular consent update. [Policy distribution design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0007-opal-policy-mirror.md) · [Consent design](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/docs/adr/0008-opal-consent-sync.md) · [Gateway probe](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/scripts/demo.sh) · [OPA status evidence](https://www.openpolicyagent.org/docs/management-status)

@@ -2,6 +2,7 @@
 
 OPAL mirror. Do not edit `authz.rego` here. Start at the root [README](../README.md).
 
+- [Operator case and endpoint verification](./exchange-operations.md)
 - [DESIGN-PIVOT.md](./DESIGN-PIVOT.md)
 - [factory-overlay.md](./factory-overlay.md)
 
@@ -12,7 +13,7 @@ Canonical policy and OPA tests: [Healthcare-Data-Exchange](https://github.com/Sa
 | Path | What it is |
 | --- | --- |
 | `authz.rego` | Mirrored policy. Pull requests that change it are rejected |
-| `scripts/` | `verify.sh` and the sync from the canonical repository |
+| `scripts/` | Mirror verification and governance checks |
 | `specs/` | Portfolio profile |
 | `.harness/` | Canonical pointer used by verify |
 | `docs/` | This map |

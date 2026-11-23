@@ -8,6 +8,9 @@ Clone that repo to change policy, then run `./scripts/sync-policy-repo.sh`.
 
 ## Docs
 
+- [Exchange operator case](https://safetymp.github.io/Healthcare-Data-Exchange/#operator) and [technical guide](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide) for the receiving gateway’s withdrawal evidence.
+- [Operations guide](docs/exchange-operations.md) for the release investment decision and separate disclosure desk.
+
 - [AGENTS.md](AGENTS.md): community contract (do not edit Rego, canonical repo, verify)
 - [README.md](README.md): mirror role and sync workflow
 - [docs/DESIGN-PIVOT.md](docs/DESIGN-PIVOT.md): remain a mirror; never a second HIE

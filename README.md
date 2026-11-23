@@ -1,15 +1,5 @@
 <h1 align="center">healthcare-policy</h1>
 
-<p align="center">
-  <strong>OPAL-tracked policy mirror</strong> for
-  <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange">synthetic FHIR cell demo</a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/SafetyMP/healthcare-policy/actions/workflows/portfolio-verify.yml"><img src="https://github.com/SafetyMP/healthcare-policy/actions/workflows/portfolio-verify.yml/badge.svg" alt="portfolio-verify"/></a>
-  <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange"><img src="https://img.shields.io/badge/canonical-Healthcare--Data--Exchange-0ea5e9" alt="canonical repo"/></a>
-</p>
-
 <a name="follow-a-research-access-request"></a>
 
 ## The privacy officer’s call
@@ -25,6 +15,13 @@ The compact guide follows the selected file through the rule, its publication re
 An exchange operations director can compare one joint gateway release with publishing the same rule through the mirror. For each path, record release-team time, upkeep and how many receivers can show the new rule in use. Track separately when each gateway first returns a matching denial after a withdrawal. That gives the privacy officer evidence about enforcement and the director a basis for deciding whether independent distribution is worth maintaining. [Operator investment question](docs/exchange-operations.md#measure-the-cost-of-independent-rule-publication)
 
 ## How the mirror fits
+
+This repository holds the rule bundle that OPAL watches for the synthetic exchange. The exchange maintains the source rule and runs the operator case. [Canonical Healthcare Data Exchange repository](https://github.com/SafetyMP/Healthcare-Data-Exchange)
+
+<p align="center">
+  <a href="https://github.com/SafetyMP/healthcare-policy/actions/workflows/portfolio-verify.yml"><img src="https://github.com/SafetyMP/healthcare-policy/actions/workflows/portfolio-verify.yml/badge.svg" alt="portfolio-verify"/></a>
+  <a href="https://github.com/SafetyMP/Healthcare-Data-Exchange"><img src="https://img.shields.io/badge/canonical-Healthcare--Data--Exchange-0ea5e9" alt="canonical repo"/></a>
+</p>
 
 1. **Identify the published rule.** The exchange owns the research access rule and tests. Its sync script copies the release to this repository. Here the pointer records the source commit and SHA-256 fingerprint of the Rego bundle. The mirror check recomputes that fingerprint from the local rule files. [Canonical rule and tests](https://github.com/SafetyMP/Healthcare-Data-Exchange/tree/main/policy) · [Sync script](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/scripts/sync-policy-repo.sh) · [Publication pointer](.harness/canonical-pointer) · [Mirror check](scripts/check-mirror-governance.sh)
 2. **Follow consent data separately.** The mirrored rule looks up research permission in `data.consent`. When the steward records a withdrawal, the exchange’s consent service asks OPAL to refresh that data at its clients. The publication acknowledgement records acceptance of that request. Receiver evidence is needed to determine what the gateway evaluated. [Mirrored rule](authz.rego) · [Consent publisher](https://github.com/SafetyMP/Healthcare-Data-Exchange/blob/main/services/consent-service/chex_consent/opal_publish.py)

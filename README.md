@@ -18,7 +18,7 @@ A patient has withdrawn research permission. The exchange’s data steward has r
 
 Read the withdrawal, identify the published rule, and inspect the evidence available from the receiving gateway. Decide what to report and who owns the next check. Try the other evidence file with the patient, request, withdrawal and rule held fixed. [Open the exchange operator case](https://safetymp.github.io/Healthcare-Data-Exchange/#operator)
 
-The compact guide follows the selected file through the rule, its publication record, the separate consent update and the gateway decision. The browser exercises fictional evidence. The canonical project contains the implementation and a separate probe that can exercise a running gateway. [Operator technical guide](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide) · [Operations guide](docs/exchange-operations.md) · [Companion case for the disclosure steward](https://safetymp.github.io/Healthcare-Data-Exchange/#research-request)
+The compact guide follows the selected file through the rule, its publication record, the separate consent update and the gateway decision. The browser exercises fictional evidence. The canonical project contains the implementation and a separate probe that can exercise a running gateway. [Operator technical guide](https://safetymp.github.io/Healthcare-Data-Exchange/#operator-guide) · [Operations guide](docs/exchange-operations.md) · [Companion case for the disclosure steward](https://safetymp.github.io/Healthcare-Data-Exchange/)
 
 ## What the exchange is deciding whether to fund
 
